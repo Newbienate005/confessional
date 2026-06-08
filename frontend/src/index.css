@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #141417; }
+::-webkit-scrollbar-thumb { background: #3a3a45; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #5a5868; }
+
+/* ─── Skeleton shimmer ─────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #1c1c21 25%, #242429 50%, #1c1c21 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* ─── Post card new-flash ──────────────────────────────── */
+.post-new {
+  animation: newPost 2s ease forwards;
+}
+
+/* ─── Safe area padding (iPhone notch) ────────────────── */
+.pb-safe   { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.pt-safe   { padding-top:    env(safe-area-inset-top,    0px); }
+
+/* ─── Prose reset for confession content ──────────────── */
+.confession-text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #e8e6f0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* ─── Focus ring ───────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

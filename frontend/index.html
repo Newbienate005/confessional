@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Confessional — Anonymous confession wall. Share your thoughts safely." />
+    <meta name="theme-color" content="#0d0d0f" />
+
+    <!-- PWA / iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Confessional" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- Favicon (inline SVG) -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%237c3aed'/%3E%3Ctext x='256' y='340' font-size='280' text-anchor='middle' font-family='Georgia,serif' fill='white'%3EC%3C/text%3E%3C/svg%3E"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%237c3aed'/%3E%3Ctext x='256' y='340' font-size='280' text-anchor='middle' font-family='Georgia,serif' fill='white'%3EC%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tabler Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
+
+    <title>Confessional</title>
+
+    <style>
+      /* Critical CSS — prevents flash of unstyled content */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: #0d0d0f;
+        color: #e8e6f0;
+        font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+      /* Loading screen shown before React hydrates */
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        background: #0d0d0f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+      }
+      #loading-screen.hidden { opacity: 0; pointer-events: none; }
+      .loading-logo {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 36px;
+        color: #e8e6f0;
+        letter-spacing: -1px;
+        margin-bottom: 24px;
+      }
+      .loading-bar {
+        width: 200px;
+        height: 2px;
+        background: #2a2a32;
+        border-radius: 1px;
+        overflow: hidden;
+      }
+      .loading-bar-inner {
+        height: 100%;
+        background: linear-gradient(90deg, #7c3aed, #c084fc);
+        border-radius: 1px;
+        animation: loadSlide 1.2s ease-in-out infinite alternate;
+      }
+      @keyframes loadSlide {
+        from { width: 20%; margin-left: 0; }
+        to   { width: 60%; margin-left: 40%; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Loading screen (hidden by main.jsx once React mounts) -->
+    <div id="loading-screen">
+      <div class="loading-logo">Confessional</div>
+      <div class="loading-bar"><div class="loading-bar-inner"></div></div>
+    </div>
+
+    <!-- React root -->
+    <div id="root"></div>
+
+    <!-- React entry point -->
+    <script type="module" src="/src/main.jsx"></script>
+
+  </body>
+</html>
