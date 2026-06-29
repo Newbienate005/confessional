@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: confessional-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20.14.0
